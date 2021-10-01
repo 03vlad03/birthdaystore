@@ -1,8 +1,12 @@
 # write and access your friends' birthdays
 import json
 birthdays = {}
-with open("save.json") as f:
-   birthdays = json.load(f)
+try:
+    with open("save.json") as f:
+        birthdays = json.load(f)
+except FileNotFoundError:
+    with open("save.json", "w") as f:
+        json.dump(birthdays, f)
 
 def enter():
     while True:
